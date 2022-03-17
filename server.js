@@ -23,18 +23,26 @@ app.use(express.json());  /* bodyParser.json() is deprecated */
 app.use(express.urlencoded({ extended: true }));   /* bodyParser.urlencoded() is deprecated */
 
 const db = require("./app/models");
+
 db.mongoose
   .connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true
-  })
-  .then(() => {
+  }, 
+  function (err, res) {
+    try {
+        console.log('Connected to Database');
+    } catch (err) {
+        throw err;
+    }
+})
+/*   .then(() => {
     console.log(succesMsg("Connected to the database!"));
   })
   .catch(err => {
     console.log(errorMsg("Cannot connect to the database!", err));
     process.exit();
-  });
+  }); */
 
 // simple route
 app.get("/", (req, res) => {
