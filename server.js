@@ -29,20 +29,14 @@ db.mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true
   }, 
-  function (err, res) {
-    try {
-        console.log('Connected to Database');
-    } catch (err) {
-        throw err;
-    }
-})
-/*   .then(() => {
+  )
+  .then(() => {
     console.log(succesMsg("Connected to the database!"));
   })
   .catch(err => {
     console.log(errorMsg("Cannot connect to the database!", err));
     process.exit();
-  }); */
+  });
 
 // simple route
 app.get("/", (req, res) => {
